@@ -33,4 +33,5 @@ def topNCalories(input: str, n: int = 3) -> list[int]:
 
 if __name__ == "__main__":
     print(calories("01_calories/input.txt"))
-    print(topNCalories("01_Calories/input.txt", 3))
+    top3=topNCalories("01_Calories/input.txt", 3)
+    print(top3, sum(top3))
