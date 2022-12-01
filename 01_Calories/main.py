@@ -1,5 +1,6 @@
 """Author: Daniel Röhrs"""
 import os
+from collections import deque
 
 def calories(input: str) -> int:
     result = 0
@@ -15,6 +16,21 @@ def calories(input: str) -> int:
 
     return result
 
+def topNCalories(input: str, n: int = 3) -> list[int]:
+    with open(input, 'r') as file:
+        results = []
+        stack = []
+        for line in file:
+            if line == "\n":
+                calSummed = sum(stack)
+                stack.clear()
+                results.append(calSummed)
+            else:
+                stack.append(int(line))
+
+    return sorted(results, reverse=True)[:n]
+
 
 if __name__ == "__main__":
     print(calories("01_calories/input.txt"))
+    print(topNCalories("01_Calories/input.txt", 3))
